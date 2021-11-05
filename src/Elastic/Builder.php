@@ -290,9 +290,10 @@ class Builder
 		if ($this->query && count($fields = $this->getSearchFields())) {
 			$this->where[] = [
 				'query_string' => [
-					'query' => '*' . $this->query . '*',
+					'query' => $this->query,
 					'fields' => $fields,
-				],
+                    'type' => 'phrase',
+                ],
 			];
 		}
 
